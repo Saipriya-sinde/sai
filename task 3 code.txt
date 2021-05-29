@@ -1,0 +1,69 @@
+At Master Node 
+
+install helm
+
+- wget https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz
+- ls
+- tar -xvzf helm-v3.5.2-linux-amd64.tar.gz
+- ls
+- cp linux-amd64/helm  /usr/bin/
+- helm
+- helm version
+
+- mkdir ws
+- cd ws
+- ls
+- mkdir sai
+- ls
+- pwdls
+- cd sai/
+- ls
+- vim Chart.yaml
+    apiVersion: v1
+    name: sai
+    version: 0.1
+    appVersion: 1.1
+    description: this is my apache server
+- mkdir templates
+- ls
+- cd templates
+- ls
+- kubectl create deploy myd --image=vimal13/apache-webserver-php:v1 --dry-run -o yaml > deployment.yaml
+- ls
+- kubectl expose deploy myd --port=80 --type=NodePort --dry-run -o yaml > service.yaml
+- ls
+- cd ws
+- helm list
+- helm install sai sai
+- helm list
+- kubectl get pods
+- kubectl get deploy
+- kubectl get svc
+- cd templates
+- kubectl create deploy mydeploy --image=httpd:v1 --dry-run -o yaml > deployment2.yaml
+- ls
+- cd ws
+- helm install sai sai
+- helm upgrade sai sai
+- vi Chart.yaml
+    apiVersion: v1
+    name: myweb
+    version: 0.2
+    appVersion: 1.2
+    description: this is my apache server
+- helm upgrade sai sai
+- helm list
+- helm history sai
+- helm rollback sai 1
+- vi values.yaml
+  replicaCount: 2
+- vi deployment2.yaml
+  in spec add
+     replicas: {{ .Values.replicaCount }}
+- helm upgrade sai sai
+- helm list
+- kubectl get pods
+
+
+
+
