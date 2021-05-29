@@ -1,1 +1,4 @@
 replicaCount: 2
+myservice: 
+    type: NodePort
+    port: 22
