@@ -3,22 +3,22 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: myd
-  name: myd
+    app: mydeploy
+  name: mydeploy
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: myd
+      app: mydeploy
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: myd
+        app: mydeploy
     spec:
       containers:
-      - image: vimal13/apache-webserver-php:v1
-        name: apache-webserver-php
+      - image: httpd
+        name: webpage
         resources: {}
 status: {}
