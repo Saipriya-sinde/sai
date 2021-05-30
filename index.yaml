@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  sai:
+  - apiVersion: v1
+    appVersion: "1.1"
+    created: "2021-05-30T10:39:01.203299351Z"
+    description: This is a chart for httpd
+    digest: 8b900722557ec896b4cfc5b4e66e43f3e2740fd190da6bbbdc6dd3a7725b447a
+    name: sai
+    urls:
+    - sai-0.1.tgz
+    version: "0.1"
+generated: "2021-05-30T10:39:01.202852282Z"
