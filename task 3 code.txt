@@ -1,0 +1,62 @@
+At Master Node 
+
+install helm
+
+- wget https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz
+- ls
+- tar -xvzf helm-v3.5.2-linux-amd64.tar.gz
+- ls
+- cp linux-amd64/helm  /usr/bin/
+- helm
+- helm version
+
+- mkdir ws/
+- cd ws/
+- ls
+- mkdir myweb
+- ls
+- cd myweb
+- ls
+- vim Chart.yaml
+    apiVersion: v1
+    name: sai
+    version: 0.1
+    appVersion: 1.1
+    description: This is a chart for httpd
+- mkdir templates
+- ls
+- cd templates
+- ls
+- kubectl create deploy mydeploy --image=httpd --dry-run -o yaml > deployment.yaml
+- kubectl expose deploy mydeploy --port=80 --type=NodePort --dry-run -o yaml > service.yaml
+- ls
+- cd myweb/
+- vi values.yaml
+  replicaCount: 2 
+  myservice:
+      port: 80
+      type: NodePort
+- vi deployment2.yaml
+  in spec add
+     replicas: {{ .Values.replicaCount }}
+- vi service.yaml
+   port: {{ .Values.myservice.port }}
+   type: {{ .Values.myservice.type }}
+- helm list
+- helm install myweb myweb/
+- helm list
+- kubectl get pods
+- kubectl get deploy
+- kubectl get svc
+
+- cd ws/
+- mkdir charts/
+- helm package myweb -d charts/
+- helm repo index charts/
+- cd charts/
+- vim index.yaml
+
+
+
+
+
