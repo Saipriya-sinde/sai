@@ -3,15 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: myd
-  name: myd
+    app: myservice
+  name: myservice
 spec:
   ports:
   - port: {{ .Values.myservice.port }}
     protocol: TCP
     targetPort: 80
   selector:
-    app: myd
+    app: myservice
   type: {{ .Values.myservice.type }}
 status:
   loadBalancer: {}
