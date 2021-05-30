@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "database"
+  labels:
+    app: mydb
+
+spec:
+  nodename: ip-172.31.29.159.ec2.internal
+  containers:
+  - name: "sai"
+    image: "mysql:5.7"
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: redhat
+    - name: MYSQL_USER
+      value: sai
+    - name: MYSQL_PASSWORD
+      value: redhat
+    - name: MYSQL_DATABASE
+      value: wpdb
