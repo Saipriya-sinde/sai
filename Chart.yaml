@@ -2,4 +2,4 @@ apiVersion: v1
 name: sai
 version: 0.1
 appVersion: 1.1
-description: this is my apache server
+description: This is a chart for httpd
